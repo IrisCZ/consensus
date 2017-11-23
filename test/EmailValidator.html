@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+ <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.4.1.css">
+
+
+</head>
+<body>
+
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+    
+
+
+    <script src="https://code.jquery.com/qunit/qunit-2.4.1.js"></script>
+    <script src="emailValidator.js"></script>
+    <script>
+        
+    QUnit.test( "hello test", function( assert ) {
+      assert.ok( 1 == "1", "Passed!" );
+    });
+
+    QUnit.test( "Valid emails", function(assert) {
+        let goodmail1="manolo@manolo.es"
+        let goodmail2="manolo@manolo.esxxx"
+        let goodmail3="man.olo@manolo.esxxx"
+
+        assert.ok(emailValidator(goodmail1) == true, goodmail1+" is valid");
+        assert.ok(emailValidator(goodmail2) == true, goodmail2+" is valid");
+        assert.ok(emailValidator(goodmail3) == true, goodmail3+" is valid");
+    });
+
+    QUnit.test( "Invalid emails", function(assert) {
+        let badmail1="manolo-manolo.es"
+        let badmail2="manolo@manoloesxxx"
+        let badmail3="man..olo@manolo.esxxx"
+
+        assert.ok(emailValidator(badmail1) == false, badmail1+" is not valid");
+        assert.ok(emailValidator(badmail2) == false, badmail2+" is not valid");
+        assert.ok(emailValidator(badmail3) == false, badmail3+" is not valid");
+    });
+
+
+    </script>
+</body>
+</html>
+
+
+</head>
+<body>
